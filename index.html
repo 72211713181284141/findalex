@@ -3,14 +3,14 @@
 
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ES3LDNRFXC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ES3LDNRFXC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-ES3LDNRFXC');
-</script>
+    gtag('config', 'G-ES3LDNRFXC');
+  </script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -80,9 +80,11 @@
       </div>
       <div class="link-box">
         <h2>Reddit</h2>
-        <h3><a href="https://www.reddit.com/user/Oliviaholtz/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button&rdt=57874" style="text-decoration: none">
-          @u/Oliviaholtz
-        </a></h3>
+        <h3><a
+            href="https://www.reddit.com/user/Oliviaholtz/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button&rdt=57874"
+            style="text-decoration: none">
+            @u/Oliviaholtz
+          </a></h3>
         <img src="reddit.png" alt="Reddit Icon">
         <p>We have been attempting to raise awareness about Alex on reddit to reach as many UCF students as possible.
           Though not having a detailed profile, Alex did often use the platform to receive updates on UCF campus life
@@ -90,22 +92,42 @@
         </p>
       </div>
     </section>
-
     <!-- Contact Section -->
     <section class="contact-section">
       <h2>Have Information?</h2>
       <p>If you have any leads or sightings regarding Alex, please reach out to our tip line immediately.</p>
-      <form action="#" method="post">
-        <label for="name">Your Name:</label>
-        <input type="text" id="name" name="name" required>
 
-        <label for="message">Message / Tip:</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
-
-        <button type="submit" class="urgent-btn">Submit Tip</button>
-      </form>
       <p class="emergency-note">Any information could be helpful in bringing Alex home.</p>
+
+      <!-- Email Signup Form -->
+      <form id="emailForm">
+        <label for="playerEmail">Your Email:</label>
+        <input type="email" id="playerEmail" placeholder="Enter your email" required>
+        <button type="submit" class="urgent-btn">Join the Search</button>
+      </form>
+
     </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+
+        // Email Sign-Up Form Submission
+        document.getElementById("emailForm").addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent form from reloading the page
+
+          let email = document.getElementById("playerEmail").value;
+          let scriptURL = "https://script.google.com/macros/s/AKfycbyf1ApsCNdUv_-NMI5Tc1ljuMldxmil0ZkvnF7vpt-KOgIqExhow36xzVNYGL7q6COJaA/exec";
+
+          fetch(scriptURL + "?email=" + encodeURIComponent(email) + "&trigger=start")
+            .then(response => response.text())
+            .then(data => {
+              document.getElementById("emailForm").innerHTML = `<p>Check your email! Olivia just sent you something.</p>`;
+            })
+            .catch(error => console.error("Error:", error));
+        });
+      });
+    </script>
+
     <!-- Tips Section -->
     <section class="tips-section">
 
@@ -150,20 +172,6 @@
         </div>
       </div>
     </section>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const form = document.querySelector(".contact-section form");
-
-        form.addEventListener("submit", function (event) {
-          event.preventDefault();
-
-          document.querySelector(".contact-section").innerHTML = `
-              <h2>Your tip has been sent.</h2>
-              <p>We appreciate your help.</p>
-            `;
-        });
-      });
-    </script>
 
   </main>
 
