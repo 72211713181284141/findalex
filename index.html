@@ -8,7 +8,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-ES3LDNRFXC');
   </script>
 
@@ -43,26 +42,14 @@
         <p><strong>Eyes:</strong> Brown</p>
         <p><strong>Hair:</strong> Brunette, Long, Wavy</p>
         <p><strong>Race:</strong> Caucasian</p>
-        <p><strong>Last Seen Wearing:</strong> a green flannel shirt over a blue T-shirt, blue jeans, and a purple
-          backpack.</p>
+        <p><strong>Last Seen Wearing:</strong> a green flannel shirt over a blue T-shirt, blue jeans, and a purple backpack.</p>
       </div>
       <div class="bio-area">
-        <p>Alex has been missing since April 4th, 2025. Her family is urgently searching for any information that
-          could
-          help locate her. Even the smallest detail could make a difference. <br> <br> Alex is a Journalism major at the
-          University of Central Florida and an active member of multiple campus organizations. Current known details
-          are
-          that she was last seen on campus around 6pm and last online the day she went missing. She spoke to her
-          roommate that evening before leaving. <br><br>
+        <p>Alex has been missing since April 4th, 2025. Her family is urgently searching for any information that could help locate her. Even the smallest detail could make a difference. <br> <br> Alex is a Journalism major at the University of Central Florida and an active member of multiple campus organizations. Current known details are that she was last seen on campus around 6pm and last online the day she went missing. She spoke to her roommate that evening before leaving. <br><br>
 
-          Below are links to Alex’s primarily-used social media as well as that of her friends who are coordinating to
-          find her. We are looking for any information that would be helpful in finding them. <br><br><u> Emergency
-            Services
-            have
-            already been contacted and are unable to lend assistance.</u>
+          Below are links to Alex’s primarily-used social media as well as that of her friends who are coordinating to find her. We are looking for any information that would be helpful in finding them. <br><br><u> Emergency Services have already been contacted and are unable to lend assistance.</u>
         </p>
       </div>
-
     </section>
 
     <!-- Social Media Links Section -->
@@ -74,29 +61,23 @@
           </a></h3>
         <img src="instagram.png" alt="Instagram Icon">
         <p>
-          Alex’s Instagram remains active, though there has been no recent activity. Her post history might contain
-          details that could help. If you interacted with her or noticed anything unusual, please let us know.
+          Alex’s Instagram remains active, though there has been no recent activity. Her post history might contain details that could help. If you interacted with her or noticed anything unusual, please let us know.
         </p>
       </div>
       <div class="link-box">
         <h2>Reddit</h2>
-        <h3><a
-            href="https://www.reddit.com/user/Oliviaholtz/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button&rdt=57874"
-            style="text-decoration: none">
+        <h3><a href="https://www.reddit.com/user/Oliviaholtz/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button&rdt=57874" style="text-decoration: none">
             @u/Oliviaholtz
           </a></h3>
         <img src="reddit.png" alt="Reddit Icon">
-        <p>We have been attempting to raise awareness about Alex on reddit to reach as many UCF students as possible.
-          Though not having a detailed profile, Alex did often use the platform to receive updates on UCF campus life
-          and activities.
-        </p>
+        <p>We have been attempting to raise awareness about Alex on reddit to reach as many UCF students as possible. Though not having a detailed profile, Alex did often use the platform to receive updates on UCF campus life and activities.</p>
       </div>
     </section>
+
     <!-- Contact Section -->
     <section class="contact-section">
       <h2>Have Information?</h2>
       <p>If you have any leads or sightings regarding Alex, please reach out to our tip line immediately.</p>
-
       <p class="emergency-note">Any information could be helpful in bringing Alex home.</p>
 
       <!-- Email Signup Form -->
@@ -105,22 +86,23 @@
         <input type="email" id="playerEmail" placeholder="Enter your email" required>
         <button type="submit" class="urgent-btn">Join the Search</button>
       </form>
-
     </section>
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-
         // Email Sign-Up Form Submission
         document.getElementById("emailForm").addEventListener("submit", function (event) {
           event.preventDefault(); // Prevent form from reloading the page
 
+          // Grab the entered email
           let email = document.getElementById("playerEmail").value;
+          // Google Apps Script URL (update if needed)
           let scriptURL = "https://script.google.com/macros/s/AKfycbyf1ApsCNdUv_-NMI5Tc1ljuMldxmil0ZkvnF7vpt-KOgIqExhow36xzVNYGL7q6COJaA/exec";
-
+          // The trigger parameter here is set to "start"; adjust if you need a different stage.
           fetch(scriptURL + "?email=" + encodeURIComponent(email) + "&trigger=start")
             .then(response => response.text())
             .then(data => {
+              // Replace the form with a success message upon successful submission.
               document.getElementById("emailForm").innerHTML = `<p>Check your email! Olivia just sent you something.</p>`;
             })
             .catch(error => console.error("Error:", error));
@@ -130,57 +112,42 @@
 
     <!-- Tips Section -->
     <section class="tips-section">
-
       <div class="tips-comments">
         <h3>Community Tips and Leads</h3>
         <div class="comment-card">
-          <p class="comment-text">“I shared a bus route to downtown campus with her that she’d at least be on every
-            Thursday for the 11:30 shuttle. This made me think about it and I haven’t seen her on it for the last 2
-            weeks now. Maybe connected?”
-          </p>
+          <p class="comment-text">“I shared a bus route to downtown campus with her that she’d at least be on every Thursday for the 11:30 shuttle. This made me think about it and I haven’t seen her on it for the last 2 weeks now. Maybe connected?”</p>
           <p class="comment-author">- Jamie</p>
         </div>
         <div class="comment-card">
-          <p class="comment-text">“Are we sure she’s really missing? She might just be working extremely hard on a
-            project. I remember talking to her once about her journalism final and she seemed very intense about it,
-            collecting all of these resources and information on a google drive she’d use for school.”</p>
+          <p class="comment-text">“Are we sure she’s really missing? She might just be working extremely hard on a project. I remember talking to her once about her journalism final and she seemed very intense about it, collecting all of these resources and information on a google drive she’d use for school.”</p>
           <p class="comment-author">- Mark</p>
         </div>
         <div class="comment-card">
-          <p class="comment-text">“I shared a writing class with her for Journalism. She was extremely active and
-            talkative near
-            the beginning of the semester, but for the last few weeks has been extremely quiet and distant.”
-          </p>
+          <p class="comment-text">“I shared a writing class with her for Journalism. She was extremely active and talkative near the beginning of the semester, but for the last few weeks has been extremely quiet and distant.”</p>
           <p class="comment-author">- Sarah</p>
         </div>
         <div class="comment-card">
-          <p class="comment-text">“I saw somebody matching that description pacing weirdly around the arboretum a few
-            days ago; I don’t remember exactly what day though.”</p>
+          <p class="comment-text">“I saw somebody matching that description pacing weirdly around the arboretum a few days ago; I don’t remember exactly what day though.”</p>
           <p class="comment-author">- YourMom</p>
         </div>
         <div class="comment-card">
-          <p class="comment-text">"I saw someone with Alex's description leaving the library on the day she went missing
-            around 10pm."
-          </p>
+          <p class="comment-text">"I saw someone with Alex's description leaving the library on the day she went missing around 10pm."</p>
           <p class="comment-author">- K</p>
         </div>
         <div class="comment-card">
-          <p class="comment-text">"I saw Alex working on her computer in the library. She seemed really into whatever
-            she was writing."
-          </p>
+          <p class="comment-text">"I saw Alex working on her computer in the library. She seemed really into whatever she was writing."</p>
           <p class="comment-author">- abc123</p>
         </div>
       </div>
     </section>
-
   </main>
 
   <footer>
     <p class="footer-note">
       Terms of Use | Privacy Policy <br>
-      This website is part of an interactive storytelling game experience. Some content has been fictionalized for
-      engagement purposes. <br>
+      This website is part of an interactive storytelling game experience. Some content has been fictionalized for engagement purposes. <br>
       © 2025 Help Find Alex. All Rights Reserved.
+    </p>
   </footer>
 </body>
 
