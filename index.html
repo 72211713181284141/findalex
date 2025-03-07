@@ -99,13 +99,15 @@
           // Google Apps Script URL (update if needed)
           let scriptURL = "https://script.google.com/macros/s/AKfycbyf1ApsCNdUv_-NMI5Tc1ljuMldxmil0ZkvnF7vpt-KOgIqExhow36xzVNYGL7q6COJaA/exec";
           // The trigger parameter here is set to "start"; adjust if you need a different stage.
-          fetch(scriptURL + "?email=" + encodeURIComponent(email) + "&trigger=start")
-            .then(response => response.text())
-            .then(data => {
-              // Replace the form with a success message upon successful submission.
-              document.getElementById("emailForm").innerHTML = `<p>Check your email! Olivia just sent you something.</p>`;
-            })
-            .catch(error => console.error("Error:", error));
+         fetch(scriptURL + "?email=" + encodeURIComponent(email) + "&trigger=start", {
+  mode: "no-cors" // This tells the browser not to expect a CORS response
+})
+.then(response => {
+  // Even though we can't see the response due to no-cors mode, we assume it worked
+  document.getElementById("emailForm").innerHTML = `<p>Check your email! Olivia just sent you something.</p>`;
+})
+.catch(error => console.error("Error:", error));
+
         });
       });
     </script>
