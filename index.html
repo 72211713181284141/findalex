@@ -131,17 +131,6 @@
         // Show success message
         document.getElementById("emailForm").innerHTML = `<p>PLEASE CHECK YOUR EMAIL FOR CORRESPONDENCE! IT MAY BE IN YOUR SPAM FOLDER!</p>`;
         
-        // If there's a next link in the response, you could offer a button to continue
-        if (data.nextLink) {
-          setTimeout(() => {
-            document.getElementById("emailForm").innerHTML += `
-              <button onclick="window.location.href='${data.nextLink}'" class="urgent-btn" style="margin-top: 15px;">
-                Continue Search
-              </button>
-            `;
-          }, 3000); // Show button after 3 seconds
-        }
-      })
       .catch(error => {
         console.error("Error:", error);
         // Fallback message in case of error
