@@ -88,57 +88,52 @@
       </form>
     </section>
 
-    <script>
-     document.addEventListener("DOMContentLoaded", function () {
-  // Email Sign-Up Form Submission
-  document.getElementById("emailForm").addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent form from reloading the page
+   <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Email Sign-Up Form Submission
+    document.getElementById("emailForm").addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent form from reloading the page
 
-    // Grab the entered email
-    let email = document.getElementById("playerEmail").value;
-    
-    // Google Apps Script URL (update with your deployed web app URL)
-    let scriptURL = "https://script.google.com/macros/s/AKfycbyf1ApsCNdUv_-NMI5Tc1ljuMldxmil0ZkvnF7vpt-KOgIqExhow36xzVNYGL7q6COJaA/exec";
-    
-    // Show loading message
-    document.getElementById("emailForm").innerHTML = `<p>Joining the search, please wait...</p>`;
-    
-    // The trigger parameter here is set to "findAlex" to match your Apps Script
-    fetch(scriptURL + "?email=" + encodeURIComponent(email) + "&trigger=findAlex")
-      .then(response => response.json())
-      .catch(error => {
-        // If we can't parse JSON (due to CORS), we'll fall back to no-cors mode
-        console.log("Falling back to no-cors mode");
-        return fetch(scriptURL + "?email=" + encodeURIComponent(email) + "&trigger=findAlex", {
-          mode: "no-cors"
-        }).then(() => {
-          // Create an empty response object since we can't read the actual response
-          return {};
+      // Grab the entered email
+      let email = document.getElementById("playerEmail").value;
+
+      // Google Apps Script URL (update with your deployed web app URL)
+      let scriptURL = "https://script.google.com/macros/s/AKfycbyf1ApsCNdUv_-NMI5Tc1ljuMldxmil0ZkvnF7vpt-KOgIqExhow36xzVNYGL7q6COJaA/exec";
+
+      // Show loading message
+      document.getElementById("emailForm").innerHTML = `<p>Joining the search, please wait...</p>`;
+
+      // The trigger parameter here is set to "findAlex" to match your Apps Script
+      fetch(scriptURL + "?email=" + encodeURIComponent(email) + "&trigger=findAlex")
+        .then(response => response.json())
+        .catch(error => {
+          console.log("Falling back to no-cors mode");
+          return fetch(scriptURL + "?email=" + encodeURIComponent(email) + "&trigger=findAlex", {
+            mode: "no-cors"
+          }).then(() => {
+            return {};
+          });
+        })
+        .then(data => {
+          let playerId = data.playerId;
+
+          // Store playerId or fallback to email if not provided
+          if (playerId) {
+            localStorage.setItem("argPlayerId", playerId);
+          } else {
+            console.log("No player ID returned, using email as backup identifier");
+            localStorage.setItem("playerEmail", email);
+          }
+
+          document.getElementById("emailForm").innerHTML = `<p>PLEASE CHECK YOUR EMAIL FOR CORRESPONDENCE! IT MAY BE IN YOUR SPAM FOLDER!</p>`;
+        })
+        .catch(error => {
+          console.error("Error:", error);
+          document.getElementById("emailForm").innerHTML = `<p>PLEASE CHECK YOUR EMAIL FOR CORRESPONDENCE! IT MAY BE IN YOUR SPAM FOLDER!</p>`;
         });
-      })
-      .then(data => {
-        // Try to get playerId from the response (if available)
-        let playerId = data.playerId;
-        
-        // Store playerId in localStorage (even if using the URL method, this is helpful as backup)
-        if (playerId) {
-          localStorage.setItem("argPlayerId", playerId);
-        } else {
-          console.log("No player ID returned, using email as backup identifier");
-          localStorage.setItem("playerEmail", email); // Keep for backward compatibility
-        }
-        
-        // Show success message
-        document.getElementById("emailForm").innerHTML = `<p>PLEASE CHECK YOUR EMAIL FOR CORRESPONDENCE! IT MAY BE IN YOUR SPAM FOLDER!</p>`;
-        
-      .catch(error => {
-        console.error("Error:", error);
-        // Fallback message in case of error
-        document.getElementById("emailForm").innerHTML = `<p>PLEASE CHECK YOUR EMAIL FOR CORRESPONDENCE! IT MAY BE IN YOUR SPAM FOLDER!</p>`;
-      });
-  });
-});
-    </script>
+    }); // Close emailForm submit event listener
+  }); // Close DOMContentLoaded event listener
+</script>
 
     <!-- Tips Section -->
     <section class="tips-section">
