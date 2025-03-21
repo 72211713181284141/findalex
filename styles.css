@@ -258,3 +258,33 @@ footer {
   color: #666;
   font-size: smaller;
 }
+
+/* upload page extras */
+.upload-title {
+  display: flex;
+  justify-content: center;
+}
+.upload-files {
+  display: flex;
+  justify-content: center;
+}
+
+.upload-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.upload-button:hover {
+  background-color: rgba(217, 83, 79, 0.1);
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.upload-button:active {
+  transform: scale(0.98);
+}
+
