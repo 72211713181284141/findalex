@@ -70,10 +70,10 @@ function verifyAndLaunchGame(files) {
       // trigger different mini-games or stages
       if (file.name.toLowerCase().includes('evidence') ||
         file.type.startsWith('image/')) {
-        fileTypeMessage = 'Image evidence detected';
+        fileTypeMessage = '';
       } else if (file.type === 'application/pdf' ||
         file.type.includes('document')) {
-        fileTypeMessage = 'Document evidence detected';
+        fileTypeMessage = '';
       }
     }
   }
@@ -103,7 +103,7 @@ function launchGamePopup(verificationMessage = '') {
   gameHeader.className = 'game-header';
 
   const gameTitle = document.createElement('h3');
-  gameTitle.textContent = 'Cyber Security Challenge';
+  gameTitle.textContent = 'YOU HAVE BEEN HACKED';
 
   // If we have a verification message, show it
   if (verificationMessage) {
@@ -184,15 +184,16 @@ function initializeP5Game() {
 
     p.preload = function () {
       try {
-        // Only try to load the logo image, skip sound files
+        // Only try to load the logo image, skip sound filesmage to the DOM
         logo = p.createGraphics(400, 300);
         logo.background(10);
         logo.fill(255, 0, 0);
         logo.textSize(32);
         logo.textAlign(p.CENTER, p.CENTER);
-        logo.text("ALEX VALEGRO", 200, 150);
+        logo.text("ALEX VALEGRO", 400, 300);
       } catch (e) {
         console.warn("Could not create logo:", e);
+        logo = null; // Set to null if creation fails
       }
     };
 
@@ -237,7 +238,6 @@ function initializeP5Game() {
         drawFinalScreen();
         return;
       }
-
       // Start screen - SKIPPED, we auto-start now
       if (!started) {
         drawStartScreen();
@@ -256,9 +256,12 @@ function initializeP5Game() {
       // Draw background and common interface.
       p.background(10);
       if (logo) {
+        p.push(); // Save current drawing state
         p.tint(255, 50);
-        p.image(logo, 0, 60, 800, 600);
+        p.imageMode(p.CORNER);
+        p.image(logo, 0, 60, p.width, p.height - 60);
         p.noTint();
+        p.pop(); // Restore drawing state
       }
       drawProgressBar();
       drawTitle();

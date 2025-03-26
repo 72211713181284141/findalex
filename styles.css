@@ -300,6 +300,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden; /* Prevent scrolling */
 }
 
 .game-container {
@@ -353,6 +354,9 @@ footer {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  position: relative; /* Add position relative */
+  width: 100%; /* Force 100% width */
+  height: 100%; /* Force 100% height */
 }
 
 /* Make sure the canvas created by p5.js fits properly */
@@ -362,6 +366,17 @@ footer {
   max-height: 100% !important;
   margin: 0 auto !important;
   object-fit: contain !important;
+  position: absolute !important; /* Position absolutely */
+  top: 50% !important; /* Center vertically */
+  left: 50% !important; /* Center horizontally */
+  transform: translate(-50%, -50%) !important; /* Perfect centering */
+  max-width: 95% !important; /* Leave some margin */
+  max-height: 95% !important; /* Leave some margin */
+}
+
+/* Hide any extra images that might be created */
+#gameCanvas img {
+  display: none !important;
 }
 
 .submit-button {
